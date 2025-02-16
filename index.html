@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cégnév - Főoldal</title>
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <title>BD Home Bau</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html {
@@ -19,33 +20,32 @@
         gsap.registerPlugin(ScrollTrigger);
         gsap.registerPlugin(ScrollToPlugin);
 
-    gsap.utils.toArray("section").forEach(section => {
-        gsap.from(section, {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            stagger: 0.5,
-            scrollTrigger: {
-                trigger: section,
-                start: "top 80%",
-                toggleActions: "play none none none",
-                markers: true
-            }
-        });
-    });
-    
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            let target = this.getAttribute('href');
-            
-            gsap.to(window, {
-                duration: 2,
-                scrollTo: { y: target, offsetY: 70 },
-                ease: "power2.inOut"
+        gsap.utils.toArray("section").forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                stagger: 0.5,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
             });
         });
-    });
+        
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                let target = this.getAttribute('href');
+                
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: { y: target, offsetY: 70 },
+                    ease: "power2.inOut"
+                });
+            });
+        });
     });
 </script>
 </head>
@@ -54,7 +54,7 @@
     <!-- Navigáció -->
     <nav class="fixed w-full bg-white shadow-md p-4 z-50">
         <div class="container mx-auto flex justify-between">
-            <a href="#" class="font-bold text-lg">BD Home Bau - Építés Felsőfokon</a>
+            <a href="" class="font-bold text-lg">BD Home Bau - Építés Felsőfokon</a>
             <ul class="flex space-x-4">
                 <li><a href="#bemutatkozas" class="hover:text-blue-500">Bemutatkozás</a></li>
                 <li><a href="#szolgaltatasok" class="hover:text-blue-500">Szolgáltatásaink</a></li>
@@ -66,20 +66,20 @@
     <!-- Hero szekció -->
     <section class="h-screen flex items-center justify-center bg-blue-500 text-white">
         <!-- <h1 class="text-4xl font-bold">Üdvözlünk a Cégünknél</h1> -->
-<!-- <video autoplay muted loop playsinline class="w-half h-screen object-cover" style="height: 85%;"> -->
-    <!-- <source src="video/homebau.mp4" type="video/mp4"> -->
-    <!-- <p>A böngésződ nem támogatja a videólejátszást.</p> -->
-<!-- </video> -->
+<video autoplay muted loop playsinline class="w-normal h-third object-cover">
+    <source src="video/homebau.mp4" type="video/mp4">
+    <p>A böngésződ nem támogatja a videólejátszást.</p>
+</video>
 
-<div class="relative w-full h-screen">
-    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-screen h-screen object-cover">
-        <source src="video/homebau.mp4" type="video/mp4">
-        <p>A böngésződ nem támogatja a videólejátszást.</p>
-    </video>
-    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <h1 class="text-white text-4xl font-bold">Üdvözlünk a Cégünknél</h1>
-    </div>
-</div>
+<!-- <div class="relative w-full h-screen"> -->
+    <!-- <video autoplay muted loop playsinline class="absolute top-0 left-0 w-screen h-screen object-cover"> -->
+        <!-- <source src="video/homebau.mp4" type="video/mp4"> -->
+        <!-- <p>A böngésződ nem támogatja a videólejátszást.</p> -->
+    <!-- </video> -->
+    <!-- <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50"> -->
+        <!-- <h1 class="text-white text-4xl font-bold">Üdvözlünk a Cégünknél</h1> -->
+    <!-- </div> -->
+<!-- </div> -->
     </section>
 
     <!-- Bemutatkozás -->
