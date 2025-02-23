@@ -85,6 +85,14 @@ nav {
     }
 }
 
+footer {
+    padding: 10px 0;
+}
+
+footer p {
+    font-size: 12px;
+}
+
 /* Szekciók */
 section {
     padding: 80px 10%;
