@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="stylesheet" href="site.css">
     <title>BD Home Bau</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -33,7 +34,7 @@
                 }
             });
         });
-        
+
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -46,16 +47,39 @@
                 });
             });
         });
+
+        const menuToggle = document.getElementById("mobile-menu");
+        const navList = document.querySelector(".nav-list");
+
+        menuToggle.addEventListener("click", function () {
+            navList.classList.toggle("active");
+            menuToggle.classList.toggle("active");
+        });
+
+        // Menü bezárása, ha egy menüpontot kiválasztanak
+        document.querySelectorAll(".nav-list a").forEach(link => {
+            link.addEventListener("click", function () {
+                navList.classList.remove("active");
+                menuToggle.classList.remove("active");
+            });
+        });
     });
 </script>
 </head>
 <body class="bg-gray-100 text-gray-900">
-
-    <!-- Navigáció -->
-    <nav class="fixed w-full bg-white shadow-md p-4 z-50">
-        <div class="container mx-auto flex justify-between">
+    <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-80 text-white p-4 z-50">
+        <div class="container mx-auto flex justify-between items-center">
             <a href="" class="font-bold text-lg">BD Home Bau - Építés Felsőfokon</a>
-            <ul class="flex space-x-4">
+    
+            <!-- Hamburger menü ikon -->
+            <div id="mobile-menu" class="menu-toggle flex md:hidden flex-col cursor-pointer">
+                <span class="block w-8 h-1 bg-white mb-1 transition"></span>
+                <span class="block w-8 h-1 bg-white mb-1 transition"></span>
+                <span class="block w-8 h-1 bg-white transition"></span>
+            </div>
+    
+            <!-- Menü lista -->
+            <ul class="nav-list hidden md:flex space-x-4 text-lg">
                 <li><a href="#bemutatkozas" class="hover:text-blue-500">Bemutatkozás</a></li>
                 <li><a href="#szolgaltatasok" class="hover:text-blue-500">Szolgáltatásaink</a></li>
                 <li><a href="#kapcsolat" class="hover:text-blue-500">Kapcsolat</a></li>
@@ -64,37 +88,50 @@
     </nav>
 
     <!-- Hero szekció -->
-    <section class="h-screen flex items-center justify-center bg-blue-500 text-white">
-        <!-- <h1 class="text-4xl font-bold">Üdvözlünk a Cégünknél</h1> -->
-<video autoplay muted loop playsinline class="w-normal h-third object-cover">
-    <source src="video/homebau.mp4" type="video/mp4">
-    <p>A böngésződ nem támogatja a videólejátszást.</p>
-</video>
-
-<!-- <div class="relative w-full h-screen"> -->
-    <!-- <video autoplay muted loop playsinline class="absolute top-0 left-0 w-screen h-screen object-cover"> -->
-        <!-- <source src="video/homebau.mp4" type="video/mp4"> -->
-        <!-- <p>A böngésződ nem támogatja a videólejátszást.</p> -->
-    <!-- </video> -->
-    <!-- <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50"> -->
-        <!-- <h1 class="text-white text-4xl font-bold">Üdvözlünk a Cégünknél</h1> -->
-    <!-- </div> -->
-<!-- </div> -->
+    <section class="h-screen flex items-center justify-center bg-gray-100 text-white">
+        <video autoplay muted loop playsinline class="w-normal h-third object-cover">
+            <source src="video/homebau.mp4" type="video/mp4">
+            <p>A böngésződ nem támogatja a videólejátszást.</p>
+        </video>
     </section>
 
     <!-- Bemutatkozás -->
-    <section id="bemutatkozas" class="h-screen flex items-center justify-center bg-white">
+    <section id="bemutatkozas" class="h-fit flex items-center justify-center bg-white">
         <div class="text-center">
             <h2 class="text-3xl font-bold">Bemutatkozás</h2>
-            <p class="mt-4 text-lg">Rövid bemutatkozás a cégről.</p>
+            <p class="mt-4 text-lg">
+                Cégünk 2022-ben alakult, kezdetben ingatlanépítéssel, felújítással és dekorációs munkákkal foglalkoztunk.
+                Az évek során folyamatosan bővítettük tevékenységünket, és mára több mint 50 főt foglalkoztatunk különböző területeken,
+                köztük multinacionális gyárakban és építőipari projekteken. Saját gépparkunkkal dolgozóink személyszállítását is biztosítjuk.
+            </p>
+            <p class="mt-4 text-lg">
+                Büszkék vagyunk rá, hogy részt vehettünk nagyszabású filmes projektekben, például a 
+                <strong>Netflix</strong> és az <strong>RTL</strong> produkcióiban, valamint a 
+                <em>Most vagy soha!</em> című film díszleteinek felépítésében.
+            </p>
+            <p class="mt-4 text-lg">
+                Hiszünk a fejlődésben, a szakmai elhivatottságban és a megbízható emberi kapcsolatokban. 
+                Célunk, hogy további multinacionális cégekkel működjünk együtt.
+            </p>
         </div>
     </section>
 
     <!-- Szolgáltatások -->
-    <section id="szolgaltatasok" class="h-screen flex items-center justify-center bg-gray-200">
+    <section id="szolgaltatasok" class="h-fit flex items-center justify-center bg-gray-100">
         <div class="text-center">
-            <h2 class="text-3xl font-bold">Szolgáltatásaink</h2>
-            <p class="mt-4 text-lg">Itt leírhatod a szolgáltatásaidat.</p>
+            <h2 class="text-3xl font-bold">Szolgáltatásaink és munkáink</h2>
+            <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <img src="img/ref01.jpg" class="montazs-kep" tooltip="előtte">
+                <img src="img/ref02.jpg" class="montazs-kep">
+                <img src="img/ref03.jpg" class="montazs-kep">
+                <img src="img/ref04.jpg" class="montazs-kep">
+                <img src="img/ref05.jpg" class="montazs-kep">
+                <img src="img/ref06.jpg" class="montazs-kep">
+                <img src="img/ref07.jpg" class="montazs-kep">
+                <img src="img/ref08.jpg" class="montazs-kep">
+                <img src="img/ref09.jpg" class="montazs-kep">
+                <img src="img/ref10.jpg" class="montazs-kep">
+            </div>
         </div>
     </section>
 
@@ -102,7 +139,11 @@
     <section id="kapcsolat" class="h-screen flex items-center justify-center bg-white">
         <div class="text-center">
             <h2 class="text-3xl font-bold">Kapcsolat</h2>
-            <p class="mt-4 text-lg">Elérhetőségek és kapcsolatfelvételi űrlap.</p>
+            <p class="mt-4 text-lg">Amennyiben felkeltettük érdeklődését, kérem keressen az alábbi elérhetőségek egyikén:</p>
+            <div id="contacts">
+                <p class="mt-4 text-lg">Telefonszám: +36 70 563 2910</p>
+                <p class="mt-4 text-lg">E-mail: bdhomebau@gmail.com</p>
+            </div>
         </div>
     </section>
 
